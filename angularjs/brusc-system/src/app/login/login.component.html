@@ -1,0 +1,27 @@
+<form #formLogin="ngForm" class="form-login" (ngSubmit)="login(formLogin)">
+
+  <img class="logo" src="../../assets/brusc_system.png" alt="Brusc System">
+
+  <mat-card-header>
+    <mat-card-title class="sign-inTitle">Sign in</mat-card-title>
+  </mat-card-header>
+
+  <mat-form-field>
+    <input matInput placeholder="Enter your email" (ngModel)="email" name="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Enter your password" (ngModel)="password" name="password"
+      [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" class="login-btn">Login</button>
+
+  <a [routerLink]="[ '/forget-password' ]">Forget your password?</a>
+
+</form>
